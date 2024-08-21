@@ -75,7 +75,7 @@ wssv.on('connection', function (socket) {
         console.log("Received message from client: "  + msg);
         client.user.setActivity(
             {
-                name: `${parseInt(msg)} player(s) on BPU`,
+                name: `${parseInt(msg.split('/')[2])} player(s) on BPU`,
                 type: ActivityType.Watching
           });
       }
