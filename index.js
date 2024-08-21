@@ -1,11 +1,9 @@
-const { Client, Intents } = require("discord.js");
-const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
-});
+const { Client, Events, GatewayIntentBits, ActivityType  } = require("discord.js");
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 
-var googleTranslateApi = require("@vitalets/google-translate-api")
-const translate = require('@vitalets/google-translate-api');
+//var googleTranslateApi = require("@vitalets/google-translate-api")
+//const translate = require('@vitalets/google-translate-api');
 
 const WebSocket = require('ws');
 const botinfo = require('./botinfo.json');
@@ -20,8 +18,10 @@ var prefix = "?";
 
 client.on("ready", () => {
   console.log("Bot Online!");
-  client.user.setActivity(`0 player(s) on BPU`, {
-    type: "WATCHING"
+  client.user.setActivity(
+    {
+        name: `0 player(s) on BPU`,
+        type: ActivityType.Watching
   });
 });
 
