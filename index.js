@@ -25,16 +25,7 @@ client.on("ready", () => {
   });
 });
 
-client.on("messageCreate", (message) => {
-  if (message.channelId == 973328392571215942 && !message.author.bot) {
-    wssv.clients.forEach(function (sclient) {
-      console.log(`Sent message to client: ${discordmsg}/${message.author.username}: ${message}`);
-      sclient.send(`discordmsg/${message.author.username}: ${message}`);
-    });
-  }
-});
-
-client.on('message', message => {
+client.on('messageCreate', message => {
   if(message.guild.id != '919234111321825320') return;
   if(message.channel.id != '973328392571215942') return;
      
