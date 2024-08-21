@@ -29,7 +29,7 @@ client.on('messageCreate', message => {
   if(message.channel.id != '973328392571215942') return;
     if(!message.author.bot){
       wssv.clients.forEach(function (sclient) {
-        sclient.send(`discordmsg/${message.author.username}: ${message.text}`);
+        sclient.send(`discordmsg/${message.author.username}: ${message.content}`);
       });
     }
 })
