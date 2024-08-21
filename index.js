@@ -1,5 +1,5 @@
-const { Client, Events, GatewayIntentBits, ActivityType  } = require("discord.js");
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
+const { Client, Events, GatewayIntentBits, ActivityType, TextChannel  } = require("discord.js");
+const client = new Client({ intents: [ GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers] });
 
 //var googleTranslateApi = require("@vitalets/google-translate-api")
 //const translate = require('@vitalets/google-translate-api');
@@ -29,7 +29,7 @@ client.on('messageCreate', message => {
   if(message.channel.id != '973328392571215942') return;
     if(!message.author.bot){
       wssv.clients.forEach(function (sclient) {
-        sclient.send(`discordmsg/${message.author.username}: ${message.content}`);
+        sclient.send(`discordmsg/${message.author.username}: ${message.cleanContent}`);
       });
     }
 })
