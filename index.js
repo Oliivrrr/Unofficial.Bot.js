@@ -34,6 +34,19 @@ client.on("messageCreate", (message) => {
   }
 });
 
+client.on('message', message => {
+  if(message.guild.id != '919234111321825320') return;
+  if(message.channel.id != '973328392571215942') return;
+     
+
+    if(!message.author.bot){
+      wssv.clients.forEach(function (sclient) {
+        console.log(`Sent message to client: ${discordmsg}/${message.author.username}: ${message}`);
+        sclient.send(`discordmsg/${message.author.username}: ${message}`);
+      });
+    }
+})
+
 wssv.on('connection', function (socket) {
   // Some feedback on the console
   console.log("A client just connected");
