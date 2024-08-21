@@ -73,9 +73,11 @@ wssv.on('connection', function (socket) {
       }
       if(splitText[1] == "playercount"){
         console.log("Received message from client: "  + msg);
-        client.user.setActivity(`${parseInt(msg)} player(s) on BPU`, {
-          type: "WATCHING"
-        });
+        client.user.setActivity(
+            {
+                name: `0 player(s) on BPU`,
+                type: ActivityType.Watching
+          });
       }
     });
   socket.on('close', function () {
