@@ -1,6 +1,5 @@
 const { Client, Events, GatewayIntentBits, ActivityType  } = require("discord.js");
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
 
 //var googleTranslateApi = require("@vitalets/google-translate-api")
 //const translate = require('@vitalets/google-translate-api');
@@ -26,13 +25,12 @@ client.on("ready", () => {
 });
 
 client.on('messageCreate', message => {
+  console.log(`HUH`);
   if(message.guild.id != '919234111321825320') return;
   if(message.channel.id != '973328392571215942') return;
-     
-
     if(!message.author.bot){
       wssv.clients.forEach(function (sclient) {
-        console.log(`Sent message to client: ${discordmsg}/${message.author.username}: ${message}`);
+        console.log(`Sent message to client: discordmsg/${message.author.username}: ${message}`);
         sclient.send(`discordmsg/${message.author.username}: ${message}`);
       });
     }
