@@ -29,7 +29,7 @@ client.on('messageCreate', message => {
   if(message.channel.id != '973328392571215942') return;
     if(!message.author.bot){
       wssv.clients.forEach(function (sclient) {
-        sclient.send(`discordmsg/${message.author.username}: ${message}`);
+        sclient.send(`discordmsg/${message.author.username}: ${message.text}`);
       });
     }
 })
@@ -82,16 +82,16 @@ wssv.on('connection', function (socket) {
 
 
       if(splitText[1] == "rawlogs"){
-        client.channels.get('973848819538210846').send(splitText[2]);
+        client.channels.cache.get('973848819538210846').send(splitText[2]);
       }
       if(splitText[1] == "servercmd"){
-        client.channels.get('973328623287300127').send(splitText[2]);
+        client.channels.cache.get('973328623287300127').send(splitText[2]);
       }
       if(splitText[1] == "servermsg"){
-        client.channels.get('973328392571215942').send(splitText[2]);
+        client.channels.cache.get('973328392571215942').send(splitText[2]);
       }
       if(splitText[1] == "serverlcl"){
-        client.channels.get('973328650218897489').send(splitText[2]);
+        client.channels.cache.get('973328650218897489').send(splitText[2]);
       }
 
     });
