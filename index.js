@@ -40,7 +40,7 @@ wssv.on('connection', function (socket) {
 
   // Attach some behavior to the incoming socket
   socket.on('message', function (msg) {
-      var splitText = msg.toString().replace('@everyone', '').replace('@here', '').split('/');
+      var splitText = msg.toString().split('/');
       if(splitText[0] != botinfo.pass)
         return;
 
