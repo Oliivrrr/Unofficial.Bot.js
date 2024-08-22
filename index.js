@@ -85,7 +85,7 @@ wssv.on('connection', function (socket) {
         client.channels.cache.get('973848819538210846').send(splitText[2]);
       }
       if(splitText[1] == "servercmd"){
-        client.channels.cache.get('973328623287300127').send(splitText[2] + splitText[3]);
+        client.channels.cache.get('973328623287300127').send(splitText[2] + " /" + splitText[3]);
       }
       if(splitText[1] == "servermsg"){
         client.channels.cache.get('973328392571215942').send(splitText[2]);
