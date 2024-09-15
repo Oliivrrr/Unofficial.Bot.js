@@ -1,4 +1,4 @@
-const { Client, Events, GatewayIntentBits, ActivityType, TextChannel  } = require("discord.js");
+const { Client, Events, GatewayIntentBits, ActivityType, TextChannel, EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const client = new Client({ intents: [ GatewayIntentBits.MessageContent, GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMembers] });
 
 //var googleTranslateApi = require("@vitalets/google-translate-api")
@@ -23,6 +23,32 @@ client.on("ready", () => {
         type: ActivityType.Watching
   });
 });
+
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('info')
+		.setDescription('Replies with info!'),
+	async execute(interaction) {
+		const exampleEmbed = new EmbedBuilder()
+          .setColor(0x0099FF)
+          .setTitle('Some title')
+          .setURL('https://discord.js.org/')
+          .setAuthor({ name: 'Some name', iconURL: 'https://i.imgur.com/AfFp7pu.png', url: 'https://discord.js.org' })
+          .setDescription('Some description here')
+          .setThumbnail('https://i.imgur.com/AfFp7pu.png')
+          .addFields(
+            { name: 'Regular field title', value: 'Some value here' },
+            { name: '\u200B', value: '\u200B' },
+            { name: 'Inline field title', value: 'Some value here', inline: true },
+            { name: 'Inline field title', value: 'Some value here', inline: true },
+          )
+          .addFields({ name: 'Inline field title', value: 'Some value here', inline: true })
+          .setImage('https://i.imgur.com/AfFp7pu.png')
+          .setTimestamp()
+          .setFooter({ text: 'Some footer text here', iconURL: 'https://i.imgur.com/AfFp7pu.png' });
+        client.channels.cache.get('973848819538210846').send({ embeds: [exampleEmbed] });
+	},
+};
 
 client.on('messageCreate', message => {
   if(message.guild.id != '919234111321825320') return;
@@ -80,6 +106,9 @@ wssv.on('connection', function (socket) {
           });
       }
 
+      if(splitText[1] == "playerquery"){
+        
+      }
 
       if(splitText[1] == "rawlogs"){
         client.channels.cache.get('973848819538210846').send(splitText[2]);
