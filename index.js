@@ -79,11 +79,6 @@ wssv.on('connection', function (socket) {
                 type: ActivityType.Watching
           });
       }
-
-      if(splitText[1] == "playerquery"){
-        
-      }
-
       if(splitText[1] == "rawlogs"){
         client.channels.cache.get('973848819538210846').send(splitText[2]);
       }
